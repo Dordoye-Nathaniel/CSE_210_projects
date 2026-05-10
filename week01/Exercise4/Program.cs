@@ -1,68 +1,61 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Principal;
-using System.Linq;
+
 class Program
 {
     static void Main()
     {
-        Console.WriteLine("Hello World! This is the Exercise4 Project.");
+        // Create an empty list
+        List<int> myNumbers = new List<int>();
 
-        // Store list in myList
-        // Remove the last element 0
-        List<int> myList = UserInput();
-        myList.Remove(0);
-        Console.WriteLine("You entered: ");
+        // set a flag to make the while loop condition true
+        // end the loop when the user enters 0
+        int number = -1;
 
-        // Iterate through myList and calculate:
-        // sum, average, and maximum number.
+        while(number != 0)
+        {
+            Console.Write("Enter a list of numbers (0 to quit): ");
+            number = int.Parse(Console.ReadLine());
+
+            // add the number to the list if it is not 0
+            if (number != 0)
+            {
+                myNumbers.Add(number);
+            }
+        }
+
+        // Iterate through myList and sum numbers
         int sum = 0;
-        foreach(int num in myList)
+        foreach(int num in myNumbers)
         {
             sum += num;
         }
-        Console.WriteLine($"The sum is: {sum}");
-        Console.WriteLine($"The average is: {sum/myList.Count}");
-        Console.WriteLine($"The largest number is: {myList.Max()}");
 
-        // Finding the smallest positive number
-        int smallestPositive = myList.Where(n=> n > 0).Min();
-        Console.WriteLine($"The smallest positive number is: {smallestPositive}");
+        // average the numbers in myLlist =
+        float average = ((float) sum) / myNumbers.Count; 
 
-        // Sorted list
-        myList.Sort();
-        foreach(int num in myList)
+        // Find the maximum number
+        int max = myNumbers[0];
+        foreach(int num in myNumbers)
         {
-        Console.WriteLine($"Sorted list: {num}"); 
-        }
-    }
-
-    static List<int> UserInput()
-    {
-        // Program ends when user enters 0
-        Console.WriteLine("Enter '0' to quit.");
-
-        // Create an object of the List class
-        List<int> numeral = new List<int>();
-
-        // Set a flag. When user enters 0, flag sets to no and program stops.
-        string flag = "yes";
-
-        // Block for user input and updting the numeral list
-        // Returns a list
-        while (flag == "yes")
-        {
-            Console.Write("Enter an integer: ");
-            int number = int.Parse(Console.ReadLine());
-            numeral.Add(number);
-
-            if(number == 0)
+            if(max < num)
             {
-                Console.WriteLine("Quiting game");
-                flag = "no";
+                max = num;
             }
         }
-        return numeral;
-        
+        // Print the sum, average and maximum number;
+        Console.WriteLine($"The sum is {sum}"); 
+        Console.WriteLine($"The average is {average}");
+        Console.WriteLine($"The average is {max}");
+
+
+        // sort myNumbers list
+        myNumbers.Sort();
+        Console.WriteLine("Sorted list: ");
+        foreach(int num in myNumbers)
+        {
+            Console.WriteLine(num);
+        }
+
     }
 }
