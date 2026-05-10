@@ -4,45 +4,49 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Hello World! This is the Exercise5 Project.");
-        DisplayResult();
+        DisplayWelcome();
+
+        string userName = PromptUserName();
+        int userNumber = PromptUserNumber();
+
+        int squareNumber = SquareNumber(userNumber);
+        
+        DisplayResult(userName, squareNumber);
+ 
     }
 
-    static void DisplayWelcome(string message)
+    static void DisplayWelcome()
     {
         Console.WriteLine("Welcome to the Program!");
     }
 
-    static string PromptUserName(string name)
+    static string PromptUserName()
     {
         // Ask for username
-        Console.Write("Enter your user name: ");
-        name = Console.ReadLine();
+        Console.Write("Please enter your name: ");
+        string name = Console.ReadLine();
+
         return name;
     }
 
-    static int PromptUserNumber(int number)
+    static int PromptUserNumber()
     {
         // Ask for user number
-        Console.Write("Enter your favorite number: ");
-        number = int.Parse(Console.ReadLine());
+        Console.Write("Please enter your favorite number: ");
+        int number = int.Parse(Console.ReadLine());
+
         return number;
     }
 
     static int SquareNumber(int number)
     {
         // return the square of the number
-        
-        number = PromptUserNumber(0);
         return number * number;        
     }
 
-    static void DisplayResult()
+    static void DisplayResult(string name, int square)
     {
-        // Display username and the squared number 
-        string UserName = PromptUserName("");
-        int NumberSquared = SquareNumber(0);
-
-        Console.WriteLine($"{UserName}, the squared of your number is {NumberSquared}");
+        // Display username and the squared number
+        Console.WriteLine($"{name}, the squared of your number is {square}");
     }
 }
