@@ -3,6 +3,10 @@
 using System;
 using System.Collections.Generic;
 
+// Exceeding Requirements Report
+// In addition to the core requirements, I added:
+// 1. Randomized prompts to reduce writer’s block.
+
 class Program
 {
     static void Main()
@@ -17,8 +21,8 @@ class Program
             "If I had one thing I could do over today, what would it be?"
         };
 
-        Random _rand = new Random();
-        int _choice;
+        Random rand = new Random();
+        int choice;
 
         do
         {
@@ -29,12 +33,12 @@ class Program
             Console.WriteLine("4. Load the journal from a file");
             Console.WriteLine("5. Quit");
             Console.Write("Choose an option: ");
-            _choice = int.Parse(Console.ReadLine());
+            choice = int.Parse(Console.ReadLine());
 
-            switch (_choice)
+            switch (choice)
             {
                 case 1:
-                    string _prompt = _prompts[_rand.Next(_prompts.Count)];
+                    string _prompt = _prompts[rand.Next(_prompts.Count)];
                     Console.WriteLine(_prompt);
                     string response = Console.ReadLine();
                     string date = DateTime.Now.ToShortDateString();
@@ -58,6 +62,6 @@ class Program
                     break;
             }
 
-        } while (_choice != 5);
+        } while (choice != 5);
     }
 }

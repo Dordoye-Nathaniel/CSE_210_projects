@@ -13,9 +13,9 @@ public class Journal
     // Add a new entry
     public void AddEntry(string prompt, string response, string date)
     {
-        Entry _entry = new Entry();
-        _entry.SetEntry(prompt, response, date);
-        _entries.Add(_entry);
+        Entry entry = new Entry();
+        entry.SetEntry(prompt, response, date);
+        _entries.Add(entry);
     }
 
     // Display all entries
