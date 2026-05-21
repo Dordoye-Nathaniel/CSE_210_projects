@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 // Exceeding Requirements Report
 // In addition to the core requirements, I added:
-// 1. Randomized prompts to reduce writer’s block.
+// Randomized prompts to reduce writer’s block.
 
 class Program
 {
