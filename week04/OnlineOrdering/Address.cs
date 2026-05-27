@@ -7,12 +7,12 @@ public class Address
     private string _state;
     private string _country;
 
-    public string StreetAddress{ get; set;}
-    public string City{ get; set;}
+    public string StreetAddress{ get{return _streetAddress;} set{_streetAddress = value;}}
+    public string City{ get{return _city;} set{_city = value;}}
 
-    public string State{get; set;}
+    public string State{get{return _state;} set{_state = value;}}
 
-    public string Country{get; set;}
+    public string Country{get{return _country;} set{_country = value;}}
 
     public Address(string streetAddress, string city, string state, string country)
     {
@@ -36,6 +36,6 @@ public class Address
 
     public string AllFields()
     {
-        return $"{StreetAddress}\n{City}\n{State}\n{Country}";
+        return $"Street Address:{StreetAddress}\nCity:{City}\nState:{State}\nCountry:{Country}";
     }
 }
