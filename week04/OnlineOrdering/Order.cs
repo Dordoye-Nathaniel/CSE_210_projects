@@ -11,27 +11,27 @@ public class Order
 
     public Order(Customer customer, List<Product> products)
     {
-        _customer = customer;
-        _product = products;
+        Customer = customer;
+        Product = products;
     }
 
-    public Customer Customer { get; set;}
+    public Customer Customer { get{return _customer;} set{_customer = value;}}
 
-    public List<Product> Product {get; set;}
+    public List<Product> Product {get{return _product;} set{_product = value;}}
 
     public string PackingLabel()
     {
         string label = "";
         foreach(var product in _product)
         {
-            label += $"Name: {product.ProductName} Product ID: {product.ProductId}\n";
+            label += $"Product name:{product.ProductName}--Product ID:{product.ProductId}\n";
         }
         return label;
     }
 
     public string ShippingLabel()
     {
-        return $"{_customer.CustomerName}\n{_customer.Address.AllFields()}";
+        return $"Customer name:{_customer.CustomerName}\n{_customer.Address.AllFields()}";
     }
 
     public double TotalCostPlusShipping()
