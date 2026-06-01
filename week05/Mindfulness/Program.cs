@@ -30,7 +30,7 @@ class Program
             }
             else if (userEntry == "2")
             {
-                ReflectingActivity reflectingActivity = new ReflectingActivity();
+                ReflectionActivity reflectingActivity = new ReflectionActivity();
                 reflectingActivity.Run();
             }
             else if(userEntry == "3")
