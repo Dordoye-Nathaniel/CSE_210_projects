@@ -1,9 +1,16 @@
 using System;
 
+// To exceed the requirements, I added logic that prevents random prompts and questions from repeating until 
+// all available options have been used once during the session. I did this by keeping a separate unused list, 
+// removing each selected item, and refilling the list only after every prompt or question has been used.
 class Program
 {
     static void Main(string[] args)
     {
+        BreathingActivity breathingActivity = new BreathingActivity();
+        ReflectionActivity reflectingActivity = new ReflectionActivity();
+        ;ListingActivity listingActivity = new ListingActivity();
+
         Console.Clear();
 
 
@@ -25,17 +32,14 @@ class Program
 
             else if(userEntry == "1")
             {
-                BreathingActivity breathingActivity = new BreathingActivity();
                 breathingActivity.Run();
             }
             else if (userEntry == "2")
             {
-                ReflectionActivity reflectingActivity = new ReflectionActivity();
                 reflectingActivity.Run();
             }
             else if(userEntry == "3")
             {
-                ListingActivity listingActivity = new ListingActivity();
                 listingActivity.Run();
             }
 
