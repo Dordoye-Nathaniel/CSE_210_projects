@@ -2,11 +2,12 @@ using System;
 
 public class ReflectionActivity: Activity
 {
+
     private List<string> _prompts;
-
     private List<string> _questions;
+    private List<string> _unusedPrompts;
+    private List<string> _unusedQuestions;
     Random rand = new Random();
-
 
     public List<string> Prompts {get{return _prompts;} set{_prompts = value;}}
     public List<string> Questions{get{return _questions;} set{_questions = value;}}
@@ -32,19 +33,34 @@ public class ReflectionActivity: Activity
         "What did you learn about yourself through this experience?",
         "How can you keep this experience in mind in the future?"            
         };
+
+        _unusedPrompts = new List<string>(Prompts);
+        _unusedQuestions = new List<string>(Questions);
     }
 
     public string GetRandomPrompt()
     {
-        int index = rand.Next(_prompts.Count);
-        return _prompts[index];
+        if(_unusedPrompts.Count == 0)
+        {
+            _unusedPrompts = new List<string>(Prompts);
+        }
+        int index = rand.Next(_unusedPrompts.Count);
+        string _prompts = _unusedPrompts[index];
+        _unusedPrompts.RemoveAt(index);
+        return _prompts;
     }
 
     public string GetRandomQuestion()
     {
+        if(_unusedQuestions.Count == 0)
+        {
+            _unusedQuestions = new List<string>(Questions);
+        }
         
-        int index = rand.Next(_questions.Count);
-        return _questions[index];
+        int index = rand.Next(_unusedQuestions.Count);
+        string _questions = _unusedQuestions[index];
+        _unusedQuestions.RemoveAt(index);
+        return _questions;
         
     }
 
